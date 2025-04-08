@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict
 import shutil
 import os
-from ocr_model import extract_text_from_image
+from .ocr_model import extract_text_from_image
 
 app = FastAPI()
 
