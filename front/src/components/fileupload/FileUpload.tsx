@@ -33,7 +33,7 @@ const FileUpload = ({onTextExtract}: FileUploadProps) => {
     }
     return (
         <div>
-            <input type="file" onChange={handleChange} />
+            <input type="file" accept="image/*, application.pdf" onChange={handleChange} />
             <button onClick={handleUpload} disabled={!file || loading}>
                 {loading ? 'Uploading...' : 'Upload'}
             </button>
