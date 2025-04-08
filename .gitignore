@@ -12,6 +12,8 @@ front/dist
 front/dist-ssr
 *.local
 
+back/venv
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
