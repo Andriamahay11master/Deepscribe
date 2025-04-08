@@ -25,6 +25,7 @@ const FileUpload = ({onTextExtract}: FileUploadProps) => {
                 }
             });
             onTextExtract(response.data.text);
+            console.log(response.data.text);
         } catch (error) {
             console.error('Error uploading file:', error);
         } finally {
