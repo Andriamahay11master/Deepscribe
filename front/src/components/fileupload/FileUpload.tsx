@@ -19,12 +19,13 @@ const FileUpload = ({onTextExtract}: FileUploadProps) => {
         formData.append('file', file);
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:5000/upload', formData, {
+            const response = await axios.post('http://localhost:8000/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
             onTextExtract(response.data.text);
+            console.log(response.data.text);
         } catch (error) {
             console.error('Error uploading file:', error);
         } finally {
