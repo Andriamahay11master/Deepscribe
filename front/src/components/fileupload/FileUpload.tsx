@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Loader from "../loader/Loader";
 
 interface FileUploadProps {
     onTextExtract: (text: string) => void
@@ -25,7 +26,6 @@ const FileUpload = ({onTextExtract}: FileUploadProps) => {
                 }
             });
             onTextExtract(response.data.text);
-            console.log(response.data.text);
         } catch (error) {
             console.error('Error uploading file:', error);
         } finally {
@@ -33,11 +33,14 @@ const FileUpload = ({onTextExtract}: FileUploadProps) => {
         }
     }
     return (
-        <div>
-            <input type="file" accept="image/*, application.pdf" onChange={handleChange} />
-            <button onClick={handleUpload} disabled={!file || loading}>
-                {loading ? 'Uploading...' : 'Upload'}
-            </button>
+        <div className="main-page">
+            {loading && <Loader />}
+            <div className="main-body">
+                <input type="file" accept="image/*, application.pdf" onChange={handleChange} />
+                <button onClick={handleUpload} disabled={!file || loading}>
+                    {loading ? 'Uploading...' : 'Upload'}
+                </button>
+            </div>
         </div>
     )
 }

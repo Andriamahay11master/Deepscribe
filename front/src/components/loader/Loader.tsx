@@ -1,9 +1,33 @@
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-const Loader = () => {
-    return (
-        <div className="loader-container">
-            <div className="loader"></div>
-        </div>
-    );
+interface LoaderProps {
+  size?: 'small' | 'medium' | 'large';
+  color?: string;
 }
-export default Loader
+
+const Loader: React.FC<LoaderProps> = ({ size = 'medium', color = '#3498db' }) => {
+  const sizeMap = {
+    small: '1rem',
+    medium: '1.5rem',
+    large: '2rem'
+  };
+
+  return (
+    <div className="loader-container"> 
+        <div className="loader">
+        <FontAwesomeIcon 
+            icon={faSpinner} 
+            spin 
+            style={{ 
+            fontSize: sizeMap[size],
+            color: color
+            }} 
+        />
+        </div>
+    </div>
+  );
+};
+
+export default Loader; 
