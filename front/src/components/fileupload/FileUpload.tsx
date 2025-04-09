@@ -35,11 +35,15 @@ const FileUpload = ({onTextExtract}: FileUploadProps) => {
     return (
         <div className="main-page">
             {loading && <Loader />}
-            <div className="main-body">
-                <input type="file" accept="image/*, application.pdf" onChange={handleChange} />
-                <button onClick={handleUpload} disabled={!file || loading}>
-                    {loading ? 'Uploading...' : 'Upload'}
-                </button>
+            <div className="main-body form-model">
+                <div className="form-group">
+                    <input type="file" accept="image/*, application.pdf" onChange={handleChange} />                
+                </div>
+                <div className="form-group form-button">
+                    <button onClick={handleUpload} disabled={!file || loading} className="btn btn-primary">
+                        {loading ? 'Uploading...' : 'Upload'}
+                    </button>
+                </div>
             </div>
         </div>
     )

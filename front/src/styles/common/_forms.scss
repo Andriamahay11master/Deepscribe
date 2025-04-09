@@ -4,6 +4,11 @@
         @include mobile{
           margin-bottom: 0.7rem;
         }
+        &.form-button{
+          button{
+            justify-self: flex-end;
+          }
+        }
       }
     label {
         display: block;
@@ -17,7 +22,7 @@
       input, textarea {
         width: 100%;
         padding: 0.7rem;
-        border: 1px solid $white-f5;
+        border: 1px solid $text-secondary;
         border-radius: 4px;
         background: $white-f5;
         color: $black;
@@ -43,11 +48,7 @@
       textarea {
         min-height: 100px;
       }
-      &.form-edit{
-        input{
-          background: $white;
-        }
-      }
+      
 }
 
 input[type="checkbox"] {
