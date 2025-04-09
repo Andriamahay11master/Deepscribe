@@ -14,6 +14,14 @@ const FileUpload = ({onTextExtract}: FileUploadProps) => {
         if (files && files.length > 0) setFile(files[0]);
     }
 
+    const reinitInput = () => {
+        const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+        if (input) {
+            input.value = '';
+            setFile(null);
+        }
+    }
+
     const handleUpload = async () => {
         if(!file) return;
         const formData = new FormData();
@@ -29,6 +37,7 @@ const FileUpload = ({onTextExtract}: FileUploadProps) => {
         } catch (error) {
             console.error('Error uploading file:', error);
         } finally {
+            reinitInput();
             setLoading(false);
         }
     }
