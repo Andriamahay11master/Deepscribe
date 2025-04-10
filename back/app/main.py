@@ -4,6 +4,7 @@ from typing import Dict
 import shutil
 import os
 from .easy_model import extract_text_from_image
+import uuid
 
 app = FastAPI()
 
@@ -21,7 +22,9 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @app.post("/upload")
 def upload_file(file: UploadFile = File(...)) -> Dict[str, str]:
-    temp_path = os.path.join(UPLOAD_DIR, file.filename)
+    #generate safe filename, replace spaces, accents and file name can be any format
+    safe_filename = f"{uuid.uuid4().hex}-{file.filename.replace(' ', '_').replace('.', '_')}"
+    temp_path = os.path.join(UPLOAD_DIR, safe_filename)
 
     with open(temp_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)

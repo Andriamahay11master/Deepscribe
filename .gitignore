@@ -15,6 +15,7 @@ front/dist-ssr
 back/app/__pycache__
 back/venv
 .venv
+temp_uploads
 
 # Editor directories and files
 .vscode/*
